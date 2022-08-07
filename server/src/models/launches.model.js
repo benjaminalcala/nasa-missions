@@ -29,7 +29,7 @@ async function populateLaunches(){
   const responseDocs = response.data.docs;
   for(let responseDoc of responseDocs){
     const customers = responseDoc.payloads.flatMap(payload => {
-      payload.customers
+      return payload.customers
     })
     const launch = {
       flightNumber: responseDoc.flight_number,
