@@ -58,31 +58,16 @@ async function loadLaunchesData(){
   }else{
     await populateLaunches();
   }
-
   
-
 }
 
 const DEFAULT_FLIGHT_NUMBER = 100;
 
-const launch = {
-  flightNumber: 100,
-  mission: 'Kepler Exploration X',
-  rocket: 'Explorer IS1',
-  launchDate: 'January 5, 2023',
-  target: 'Kepler-442 b',
-  customers: [
-    'ZTM', 'NASA'
-  ],
-  upcoming: true,
-  success: true
-}
-
-setNewLaunch(launch);
-
-
-async function getAllLaunches(){
+async function getAllLaunches(skip, limit){
   return await launches.find({}, {'_id': 0, '__v': 0})
+  .sort({flightNumber: 1})
+  .skip(skip)
+  .limit(limit)
 }
 
 
